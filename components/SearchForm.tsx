@@ -6,7 +6,7 @@ import styles from "../styles/SearchForm.module.scss"
 const SearchForm = () => {
   return (
     <form className={styles.form}>
-      <input type="text" />
+      <input type="text" placeholder="Entrez le titre" />
       <button type="submit">Rechercher</button>
       <div>
         <button>
