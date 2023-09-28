@@ -2,6 +2,7 @@
 import { moviesFetch } from "@/app/store/moviesSlice"
 import {
   selectMovies,
+  selectQuery,
   useAppDispatch,
   useAppSelector,
 } from "@/app/store/selectors"
@@ -11,11 +12,11 @@ import MovieCard from "./MovieCard"
 const Movies = () => {
   const dispatch = useAppDispatch()
   const movies = useAppSelector(selectMovies)
-  console.log(movies)
+  const search = useAppSelector(selectQuery)
 
   useEffect(() => {
     dispatch(moviesFetch())
-  }, [dispatch])
+  }, [dispatch, search])
 
   return (
     <section>
