@@ -7,3 +7,4 @@ export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
 export const useAppDispatch = () => useDispatch<AppDispatch>()
 
 export const selectMovies = (state: RootState) => state.movies.data?.results
+export const selectQuery = (state: RootState) => state.movies.searchQuery
