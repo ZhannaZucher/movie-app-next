@@ -1,0 +1,57 @@
+@import "./variables.module.scss";
+
+form {
+  width: 220px;
+  margin: 0 auto;
+  input[type="text"] {
+    padding: 1px 10px;
+    border-radius: 5px 5px 0 0;
+    border: none;
+    font-size: 1.1rem;
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    height: 30px;
+    outline: none;
+    text-align: center;
+  }
+  button[type="submit"] {
+    padding: 1px 10px;
+    width: 100%;
+    height: 36px;
+    margin: 0 auto;
+    border-radius: 0 0 5px 5px;
+    background: $color-active;
+    color: white;
+    font-size: 1.3rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 400ms;
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.35);
+      transition: 400ms;
+    }
+  }
+  div {
+    margin: 8px auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    cursor: pointer;
+    border-radius: 5px;
+    button {
+      background: transparent;
+      font-size: 1em;
+      color: white;
+      height: 30px;
+      width: 60px;
+      border-radius: 6px;
+      transition: 400ms;
+      &:hover {
+        font-weight: 600;
+        background-color: rgba(255, 255, 255, 0.35);
+        transition: 400ms;
+      }
+    }
+  }
+}

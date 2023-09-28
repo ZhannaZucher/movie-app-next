@@ -1,9 +1,10 @@
 import Movies from "@/components/Movies"
+import SearchForm from "@/components/SearchForm"
 
 export default function Home() {
   return (
     <>
-      {/* ici search compo */}
+      <SearchForm />
       <Movies />
     </>
   )
