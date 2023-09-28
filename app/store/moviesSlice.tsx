@@ -1,6 +1,6 @@
 "use client"
 
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
+import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit"
 
 type Movie = {
   adult: boolean
@@ -27,18 +27,26 @@ type MoviesState = {
   data: Data | null
   loading: boolean
   error: null | string
+  searchQuery: string | null
 }
 
 const initialState: MoviesState = {
   data: null,
   loading: false,
   error: null,
+  searchQuery: null,
 }
 
-export const moviesFetch = createAsyncThunk("movies/moviesFetch", async () => {
+export const moviesFetch = createAsyncThunk<
+  any,
+  undefined,
+  { state: { movies: MoviesState } }
+>("movies/moviesFetch", async (_, { getState }) => {
+  const getQuery = getState().movies.searchQuery
+  const query = getQuery ? getQuery : "code"
   try {
     const response = await fetch(
-      "https://api.themoviedb.org/3/search/movie?api_key=122d4d2dbb2458a2b88ec329b2f916a6&query=code&language=fr-FR"
+      `https://api.themoviedb.org/3/search/movie?api_key=122d4d2dbb2458a2b88ec329b2f916a6&query=${query}&language=fr-FR`
     )
     if (response.ok) {
       const data = await response.json()
@@ -52,7 +60,11 @@ export const moviesFetch = createAsyncThunk("movies/moviesFetch", async () => {
 const moviesSlice = createSlice({
   name: "movies",
   initialState,
-  reducers: {},
+  reducers: {
+    setSearchQuery(state, action: PayloadAction<string>) {
+      state.searchQuery = action.payload
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(moviesFetch.pending, (state) => {
@@ -69,4 +81,5 @@ const moviesSlice = createSlice({
   },
 })
 
+export const { setSearchQuery } = moviesSlice.actions
 export default moviesSlice.reducer
