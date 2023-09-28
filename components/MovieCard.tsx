@@ -3,6 +3,9 @@ import Image from "next/image"
 import styles from "../styles/MovieCard.module.scss"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faStar, faHeart } from "@fortawesome/free-solid-svg-icons"
+import { useState } from "react"
+import { useAppDispatch } from "@/app/store/selectors"
+import { addToFavorites, removeFromFavorites } from "@/app/store/favoritesSlice"
 
 type MovieCard = {
   posterPath?: string | null
@@ -23,6 +26,9 @@ const MovieCard = ({
   releaseDate,
   rating,
 }: MovieCard) => {
+  const [isFavorite, setIsFavorite] = useState(false)
+  const dispatch = useAppDispatch()
+
   const imageSrc = posterPath
     ? `https://image.tmdb.org/t/p/original/${posterPath}`
     : "/poster.jpg"
@@ -32,6 +38,15 @@ const MovieCard = ({
     month: "numeric",
     year: "numeric",
   })
+
+  const toggleFavorite = (id: number) => {
+    if (!isFavorite) {
+      dispatch(addToFavorites(id))
+    } else {
+      dispatch(removeFromFavorites(id))
+    }
+    setIsFavorite(!isFavorite)
+  }
 
   return (
     <article className={styles.article}>
@@ -57,7 +72,11 @@ const MovieCard = ({
         <h4>Synopsis</h4>
         <p>{overview}</p>
       </div>
-      <div className={styles.favorite}>
+      <div
+        className={styles.favorite}
+        onClick={() => toggleFavorite(id)}
+        style={{ color: isFavorite ? "#e50914" : "white" }}
+      >
         <FontAwesomeIcon icon={faHeart} />
       </div>
     </article>
