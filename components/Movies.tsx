@@ -19,7 +19,7 @@ const Movies = () => {
 
   return (
     <section>
-      {movies?.map((movie) => (
+      {movies?.slice(0, 12).map((movie) => (
         <MovieCard
           key={movie.id}
           title={movie.original_title}
