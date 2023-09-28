@@ -6,6 +6,7 @@ import { faStar, faHeart } from "@fortawesome/free-solid-svg-icons"
 import { useState } from "react"
 import { useAppDispatch } from "@/app/store/selectors"
 import { addToFavorites, removeFromFavorites } from "@/app/store/favoritesSlice"
+import { genreFinder } from "@/utils/genreFinder"
 
 type MovieCard = {
   posterPath?: string | null
@@ -39,6 +40,8 @@ const MovieCard = ({
     year: "numeric",
   })
 
+  const genres = genreFinder(genreId)
+
   const toggleFavorite = (id: number) => {
     if (!isFavorite) {
       dispatch(addToFavorites(id))
@@ -61,13 +64,13 @@ const MovieCard = ({
       </div>
       <div className={styles.about}>
         <h2>{title}</h2>
-        <h3 className="about__release">Sorti le : {formatedDate}</h3>
+        <h3>Date de sortie : {releaseDate ? formatedDate : "inconnue"}</h3>
         <span>{rating.toFixed(1)} / 10 </span>
         <FontAwesomeIcon icon={faStar} color="#ead91f" fontSize="0.8em" />
-        <ul className="genre">
-          <li>Action</li>
-          <li>Drame</li>
-          <li>Romance</li>
+        <ul>
+          {genres.map((genre) => (
+            <li key={genre}>{genre}</li>
+          ))}
         </ul>
         <h4>Synopsis</h4>
         <p>{overview}</p>
