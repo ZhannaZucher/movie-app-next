@@ -1,4 +1,5 @@
 @import "./variables.module.scss";
+@import "./mixins.module.scss";
 
 * {
   padding: 0;
@@ -33,8 +34,8 @@ aside {
 
 html,
 body {
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
   font-size: 100%;
   line-height: 1;
   font-size: 14px;
@@ -114,17 +115,39 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
+  max-width: 1440px;
+  margin: 0 auto;
 }
 
 :root {
-  max-width: 1440px;
-  margin: 0 auto;
   background-color: #000;
   color: #fff;
+}
+
+main {
+  width: 98%;
+  margin: 0 auto;
 }
 
 .active {
   font-weight: bold;
   color: $color-active;
   cursor: pointer;
+}
+
+section {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
+  row-gap: 20px;
+  @include large-devices {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @include small-devices {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include x-small-devices {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }

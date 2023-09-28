@@ -1,3 +1,12 @@
 $color-primary: #000;
 $color-secodary: #e50914;
-$color-active: #0071eb;
+$color-active: #546ee4d2;
+$color-font: rgb(168, 167, 167);
+
+//responsive map:
+$breakpoints: (
+  large: 1200px,
+  medium: 992px,
+  small: 768px,
+  x-small: 576px,
+);

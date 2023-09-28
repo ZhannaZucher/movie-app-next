@@ -1,4 +1,5 @@
 @import "./variables.module.scss";
+@import "./mixins.module.scss";
 
 header {
   display: flex;
@@ -6,7 +7,14 @@ header {
   align-items: center;
   position: relative;
   height: 110px;
+  @include x-small-devices {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: start;
+    padding: 10px 20px;
+  }
   h1 {
+    padding-top: 10px;
     font-weight: 700;
     color: $color-secodary;
     font-size: 2.2em;
@@ -15,6 +23,10 @@ header {
     position: absolute;
     display: flex;
     left: 20px;
+    @include x-small-devices {
+      flex-direction: column;
+      position: static;
+    }
     a {
       display: flex;
       justify-content: center;
@@ -25,6 +37,9 @@ header {
       width: 70px;
       border-radius: 6px;
       transition: 500ms;
+      @include x-small-devices {
+        margin: 0;
+      }
       &:hover {
         background-color: rgba(255, 255, 255, 0.35);
         font-weight: 500;
