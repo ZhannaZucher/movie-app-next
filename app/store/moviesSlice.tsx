@@ -64,6 +64,18 @@ const moviesSlice = createSlice({
     setSearchQuery(state, action: PayloadAction<string>) {
       state.searchQuery = action.payload
     },
+    sortByTop(state) {
+      if (state.data)
+        state.data.results = state.data.results.sort(
+          (a, b) => b.vote_average - a.vote_average
+        )
+    },
+    sortByFlop(state) {
+      if (state.data)
+        state.data.results = state.data.results.sort(
+          (a, b) => a.vote_average - b.vote_average
+        )
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -81,5 +93,5 @@ const moviesSlice = createSlice({
   },
 })
 
-export const { setSearchQuery } = moviesSlice.actions
+export const { setSearchQuery, sortByTop, sortByFlop } = moviesSlice.actions
 export default moviesSlice.reducer
