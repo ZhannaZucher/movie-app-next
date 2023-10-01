@@ -26,7 +26,10 @@ const favoritesSlice = createSlice({
       }
     },
     addToMyFavorites(state, action: PayloadAction<Movie>) {
-      if (state.favoriteMovies.includes(action.payload)) {
+      const alreadyFavorite = state.favoriteMovies.find(
+        (movie) => movie.id === action.payload.id
+      )
+      if (alreadyFavorite !== undefined) {
         return
       } else {
         state.favoriteMovies.push(action.payload)
