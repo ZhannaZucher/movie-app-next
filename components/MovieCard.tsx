@@ -24,6 +24,7 @@ type MovieCard = {
   genreId: number[]
   releaseDate: string
   rating: number
+  myFavorite: boolean
 }
 
 const MovieCard = ({
@@ -34,8 +35,9 @@ const MovieCard = ({
   genreId,
   releaseDate,
   rating,
+  myFavorite,
 }: MovieCard) => {
-  const [isFavorite, setIsFavorite] = useState(false)
+  const [isFavorite, setIsFavorite] = useState(myFavorite)
   const dispatch = useAppDispatch()
   const movies = useAppSelector(selectMovies)
 
@@ -86,13 +88,17 @@ const MovieCard = ({
         <h4>Synopsis</h4>
         <p>{overview}</p>
       </div>
-      <div
-        className={styles.favorite}
-        onClick={() => toggleFavorite(id)}
-        style={{ color: isFavorite ? "#e50914" : "white" }}
-      >
-        <FontAwesomeIcon icon={faHeart} />
-      </div>
+      {!myFavorite ? (
+        <div
+          className={styles.favorite}
+          onClick={() => toggleFavorite(id)}
+          style={{ color: isFavorite ? "#e50914" : "white" }}
+        >
+          <FontAwesomeIcon icon={faHeart} />
+        </div>
+      ) : (
+        <button>Supprimer des favoris</button>
+      )}
     </article>
   )
 }

@@ -30,6 +30,7 @@ const Movies = () => {
           genreId={movie.genre_ids}
           releaseDate={movie.release_date}
           rating={movie.vote_average}
+          myFavorite={false}
         />
       ))}
     </section>
