@@ -8,3 +8,6 @@ export const useAppDispatch = () => useDispatch<AppDispatch>()
 
 export const selectMovies = (state: RootState) => state.movies.data?.results
 export const selectQuery = (state: RootState) => state.movies.searchQuery
+export const selectFavoriteIds = (state: RootState) => state.favorites.idsList
+export const selectFavoriteMovies = (state: RootState) =>
+  state.favorites.favoriteMovies

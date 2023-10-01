@@ -2,7 +2,7 @@
 
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit"
 
-type Movie = {
+export type Movie = {
   adult: boolean
   backdrop_path: string
   genre_ids: number[]

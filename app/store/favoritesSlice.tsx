@@ -1,32 +1,48 @@
 "use client"
-
+import type { Movie } from "@/app/store/moviesSlice"
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { selectFavoriteMovies, useAppSelector } from "./selectors"
 
 type MovieId = number | string
 type FavoritesState = {
-  list: MovieId[]
+  idsList: MovieId[]
+  favoriteMovies: Movie[]
 }
 
 const initialState: FavoritesState = {
-  list: [],
+  idsList: [],
+  favoriteMovies: [],
 }
 
 const favoritesSlice = createSlice({
   name: "favorites",
   initialState,
   reducers: {
-    addToFavorites(state, action: PayloadAction<number>) {
-      if (state.list.includes(action.payload)) {
+    addFavoriteId(state, action: PayloadAction<number>) {
+      if (state.idsList.includes(action.payload)) {
         return
       } else {
-        state.list.push(action.payload)
+        state.idsList.push(action.payload)
       }
     },
-    removeFromFavorites(state, action: PayloadAction<number>) {
-      state.list = state.list.filter((movieId) => movieId !== action.payload)
+    addToMyFavorites(state, action: PayloadAction<Movie>) {
+      if (state.favoriteMovies.includes(action.payload)) {
+        return
+      } else {
+        state.favoriteMovies.push(action.payload)
+      }
+    },
+    removeFromMyFavorites(state, action: PayloadAction<number>) {
+      state.idsList = state.idsList.filter(
+        (movieId) => movieId !== action.payload
+      )
+      state.favoriteMovies = state.favoriteMovies.filter(
+        (favorite) => favorite.id !== action.payload
+      )
     },
   },
 })
 
-export const { addToFavorites, removeFromFavorites } = favoritesSlice.actions
+export const { addFavoriteId, addToMyFavorites, removeFromMyFavorites } =
+  favoritesSlice.actions
 export default favoritesSlice.reducer

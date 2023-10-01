@@ -4,8 +4,16 @@ import styles from "../styles/MovieCard.module.scss"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faStar, faHeart } from "@fortawesome/free-solid-svg-icons"
 import { useState } from "react"
-import { useAppDispatch } from "@/app/store/selectors"
-import { addToFavorites, removeFromFavorites } from "@/app/store/favoritesSlice"
+import {
+  selectMovies,
+  useAppDispatch,
+  useAppSelector,
+} from "@/app/store/selectors"
+import {
+  addFavoriteId,
+  addToMyFavorites,
+  removeFromMyFavorites,
+} from "@/app/store/favoritesSlice"
 import { genreFinder } from "@/utils/genreFinder"
 
 type MovieCard = {
@@ -29,6 +37,7 @@ const MovieCard = ({
 }: MovieCard) => {
   const [isFavorite, setIsFavorite] = useState(false)
   const dispatch = useAppDispatch()
+  const movies = useAppSelector(selectMovies)
 
   const imageSrc = posterPath
     ? `https://image.tmdb.org/t/p/original/${posterPath}`
@@ -43,10 +52,12 @@ const MovieCard = ({
   const genres = genreFinder(genreId)
 
   const toggleFavorite = (id: number) => {
+    const favoriteMovie = movies?.find((movie) => movie.id === id)
     if (!isFavorite) {
-      dispatch(addToFavorites(id))
+      dispatch(addFavoriteId(id))
+      favoriteMovie && dispatch(addToMyFavorites(favoriteMovie))
     } else {
-      dispatch(removeFromFavorites(id))
+      dispatch(removeFromMyFavorites(id))
     }
     setIsFavorite(!isFavorite)
   }
