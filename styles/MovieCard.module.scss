@@ -11,6 +11,30 @@ article {
   position: relative;
   overflow: hidden;
   color: #fff;
+  button {
+    position: absolute;
+    bottom: 1.5%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    font-size: 0.8em;
+    height: 20px;
+    font-weight: bold;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.35);
+    border-radius: 5px;
+    padding: 0 6px;
+    cursor: pointer;
+    transition: 400;
+    z-index: 3;
+    &:hover {
+      transition: 400;
+      color: $color-secodary;
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+  }
 }
 
 .container {
@@ -79,7 +103,6 @@ article {
     }
   }
 }
-
 .favorite {
   position: absolute;
   bottom: 42.5%;
