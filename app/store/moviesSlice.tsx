@@ -44,10 +44,9 @@ export const moviesFetch = createAsyncThunk<
 >("movies/moviesFetch", async (_, { getState }) => {
   const getQuery = getState().movies.searchQuery
   const query = getQuery ? getQuery : "code"
-  const keyAPI = process.env.NEXT_PUBLIC_API_KEY as string
   try {
     const response = await fetch(
-      `https://api.themoviedb.org/3/search/movie?api_key=${keyAPI}&query=${query}&language=fr-FR`
+      `https://api.themoviedb.org/3/search/movie?api_key=122d4d2dbb2458a2b88ec329b2f916a6&query=${query}&language=fr-FR`
     )
     if (response.ok) {
       const data = await response.json()
