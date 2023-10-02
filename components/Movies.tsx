@@ -1,6 +1,7 @@
 "use client"
 import { moviesFetch } from "@/app/store/moviesSlice"
 import {
+  selectFavoriteIds,
   selectMovies,
   selectQuery,
   useAppDispatch,
@@ -13,6 +14,16 @@ const Movies = () => {
   const dispatch = useAppDispatch()
   const movies = useAppSelector(selectMovies)
   const search = useAppSelector(selectQuery)
+  const favorites = useAppSelector(selectFavoriteIds)
+
+  const checkStatus = (movieId: number) => {
+    const isFavorite = favorites.find((id) => id === movieId)
+    if (isFavorite !== undefined) {
+      return true
+    } else {
+      return false
+    }
+  }
 
   useEffect(() => {
     dispatch(moviesFetch())
@@ -30,7 +41,7 @@ const Movies = () => {
           genreId={movie.genre_ids}
           releaseDate={movie.release_date}
           rating={movie.vote_average}
-          myFavorite={false}
+          myFavorite={checkStatus(movie.id)}
         />
       ))}
     </section>

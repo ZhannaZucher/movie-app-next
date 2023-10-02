@@ -58,10 +58,11 @@ const MovieCard = ({
     if (!isFavorite) {
       dispatch(addFavoriteId(id))
       favoriteMovie && dispatch(addToMyFavorites(favoriteMovie))
+      setIsFavorite(true)
     } else {
       dispatch(removeFromMyFavorites(id))
+      setIsFavorite(false)
     }
-    setIsFavorite(!isFavorite)
   }
 
   return (
@@ -88,19 +89,13 @@ const MovieCard = ({
         <h4>Synopsis</h4>
         <p>{overview}</p>
       </div>
-      {!myFavorite ? (
-        <div
-          className={styles.favorite}
-          onClick={() => toggleFavorite(id)}
-          style={{ color: isFavorite ? "#e50914" : "white" }}
-        >
-          <FontAwesomeIcon icon={faHeart} />
-        </div>
-      ) : (
-        <button onClick={() => dispatch(removeFromMyFavorites(id))}>
-          Supprimer des favoris
-        </button>
-      )}
+      <div
+        className={styles.favorite}
+        onClick={() => toggleFavorite(id)}
+        style={{ color: isFavorite ? "#e50914" : "white" }}
+      >
+        <FontAwesomeIcon icon={faHeart} />
+      </div>
     </article>
   )
 }
