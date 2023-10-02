@@ -5,7 +5,6 @@ import MovieCard from "./MovieCard"
 
 const Favorites = () => {
   const favoriteMovies = useAppSelector(selectFavoriteMovies)
-  console.log(favoriteMovies)
 
   return (
     <section>
