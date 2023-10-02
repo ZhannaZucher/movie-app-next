@@ -7,34 +7,10 @@ article {
   background: #060d2c;
   border-radius: 16px;
   margin: 5px;
-  padding: 26px 15px 30px;
+  padding: 26px 10px 30px;
   position: relative;
   overflow: hidden;
   color: #fff;
-  button {
-    position: absolute;
-    bottom: 1.5%;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    justify-items: center;
-    align-items: center;
-    font-size: 0.8em;
-    height: 20px;
-    font-weight: bold;
-    color: white;
-    background-color: rgba(255, 255, 255, 0.35);
-    border-radius: 5px;
-    padding: 0 6px;
-    cursor: pointer;
-    transition: 400;
-    z-index: 3;
-    &:hover {
-      transition: 400;
-      color: $color-secodary;
-      background-color: rgba(255, 255, 255, 0.2);
-    }
-  }
 }
 
 .container {
@@ -75,7 +51,7 @@ article {
     line-height: 20px;
   }
   ul {
-    margin: 12px 0;
+    margin-bottom: 12px;
     display: flex;
     justify-items: start;
     flex-wrap: wrap;
@@ -88,7 +64,7 @@ article {
       font-weight: bold;
       background-color: rgba(255, 255, 255, 0.35);
       border-radius: 5px;
-      margin-right: 6px;
+      margin: 6px 6px 0 0;
       padding: 0 6px;
     }
   }
