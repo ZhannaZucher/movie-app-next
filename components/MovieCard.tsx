@@ -97,7 +97,9 @@ const MovieCard = ({
           <FontAwesomeIcon icon={faHeart} />
         </div>
       ) : (
-        <button>Supprimer des favoris</button>
+        <button onClick={() => dispatch(removeFromMyFavorites(id))}>
+          Supprimer des favoris
+        </button>
       )}
     </article>
   )
