@@ -9,7 +9,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 ![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)
 ![NEXT.js](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
 
-## Demo of Cooking app is available on Github Pages [here](https://movie-app-next-hzou4xibp-zhannazucher.vercel.app)
+## Demo of Cooking app is available on Github Pages [here](https://movie-app-next-l16ph53uo-zhannazucher.vercel.app)
 
 ## Getting Started
 
