@@ -9,6 +9,8 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 ![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)
 ![NEXT.js](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
 
+![MovieApp](screenshot.png)
+
 ## Demo of Cooking app is available on Github Pages [here](https://movie-app-next-l16ph53uo-zhannazucher.vercel.app)
 
 ## Getting Started
@@ -26,3 +28,9 @@ bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+### Prerequisites
+
+![npm](https://img.shields.io/badge/npm-9.2.0-%23000000?style=flat-square&logo=npm&logoColor=white)
+
+![Node.js](https://img.shields.io/badge/Node.js-18.12.1-43853D?style=flat-square&logo=node.js&logoColor=white)
